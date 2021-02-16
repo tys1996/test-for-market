@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//maybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.servingwebbookstore.userinfo.dao.UserDao">
+<!--
+    <resultMap id="userEntity" type="com.example.servingwebbookstore.userinfo.entity">
+        <result property="userid" jdbcType="INTEGER" column="userid"/>
+        <result property="username" jdbcType="VARCHAR" column="username"/>
+        <result property="phone" jdbcType="INTEGER" column="phone"/>
+        <result property="address" jdbcType="VARCHAR" column="address"/>
+    </resultMap>
+-->
+    <!--select语句的id要与dao层的方法一致，返回结果类型是entity实体类，指定参数类型-->
+    <select id="getdata" resultType="com.example.servingwebbookstore.userinfo.entity.UserEntity" parameterType="java.util.Map">
+        select userid,username,phone,address
+        from userinfo
+    </select>
+
+    <!--    根据id查询用户数据-->
+    <select id="dataByid" parameterType="java.lang.Integer" resultType="com.example.servingwebbookstore.userinfo.entity.UserEntity">
+        select * from userinfo where userid=${userid}
+    </select>
+
+    <update id="updatePSW" parameterType="com.example.servingwebbookstore.userinfo.entity.UserEntity">
+        update userinfo set username=#{username},`password`=#{password} where userid=${userid};
+    </update>
+
+</mapper>

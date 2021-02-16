@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!--引入bootstrap和jquery-->
+    <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap-theme.min.css" />
+    <script type="text/javascript" src="/bootstrap-3.3.7/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <h1>你好</h1>
+    <label for="userid">请输入userid:</label>
+    <input id="userid" type="text" value="">
+    <input id="sub" class="btn btn-success form-control" type="button" value="查询">
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $("#sub").click(function () {
+
+        var ID = $("#userid").val();
+
+        if (ID.length == 0) {
+            alert("用户ID不能为空")
+            return;//不让程序向下执行
+        }
+        //跳转到根据id显示信息页面
+        window.location.href="/dataByid.html?userid="+ID
+
+    })
+
+</script>
